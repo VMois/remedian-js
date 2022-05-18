@@ -78,5 +78,19 @@ describe('Remedian algorithm implementation correctness', () => {
 
     // median of (1,2,3) is 2, and should be placed in a new buffer
     expect(remedian.buffers[1][0]).toEqual(2);
+
+    // returns correct median
+    expect(remedian.getMedian()).toEqual(2);
+  });
+
+  test(`when number of elements is not a power of buffer size, weighted median should be calculated`, () => {
+    const remedian = new Remedian(3);
+    remedian.write(1);
+    remedian.write(2);
+    remedian.write(3);
+    remedian.write(4);
+
+    expect(remedian._shouldCalculateWeightedMedian()).toEqual(true);
+    expect(remedian.getMedian()).toEqual(2);
   });
 });
