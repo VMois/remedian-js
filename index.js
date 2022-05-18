@@ -35,14 +35,8 @@ class Remedian {
      * @param {number} position - buffer number to check.
      * @return {boolean} true if buffer is empty, false if not.
      */
-  _bufferEmpty(position) {
-    const array = this.buffers[position];
-    for (let j = 0; j < array.length; j++) {
-      if (array[j] != undefined) {
-        return false;
-      }
-    }
-    return true;
+  _bufferEmpty(position) {   
+    return this.buffers[position][0] == undefined;
   }
 
   /**
