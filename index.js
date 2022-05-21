@@ -13,7 +13,7 @@ class Remedian {
      */
   constructor(bufferSize) {
     if (bufferSize === undefined) {
-        bufferSize = 3;
+      bufferSize = 3;
     }
     this.bufferSize = bufferSize;
 
