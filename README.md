@@ -3,6 +3,7 @@
 A small JavaScript library for efficient approximation of median value on a streaming data.
 
 ![MIT license](https://img.shields.io/github/license/VMois/remedian-js)
+![npm](https://img.shields.io/npm/v/remedian)
 
 ## Features
 
@@ -22,6 +23,12 @@ remedian.write(3);
 remedian.write(99);
 
 console.log('My approximate median is ', remedian.approximate());
+```
+
+## Install
+
+```bash
+npm install remedian
 ```
 
 ## References
