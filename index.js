@@ -152,8 +152,8 @@ class Remedian {
   }
 
   /**
-     * Calculate approximate median.
-     * @return {number} approximate median.
+     * Calculate approximate median based on Remedian algorithm.
+     * @return {(number|undefined)} approximate median if, at least, one number was added.
      */
   approximate() {
     if (this.buffers.length == 0) {
