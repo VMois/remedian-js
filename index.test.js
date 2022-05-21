@@ -80,7 +80,7 @@ describe('Remedian algorithm implementation correctness', () => {
     expect(remedian.buffers[1][0]).toEqual(2);
 
     // returns correct median
-    expect(remedian.getMedian()).toEqual(2);
+    expect(remedian.approximate()).toEqual(2);
   });
 
   test(`when number of elements is not a power of buffer size, weighted median should be calculated`, () => {
@@ -91,6 +91,6 @@ describe('Remedian algorithm implementation correctness', () => {
     remedian.write(4);
 
     expect(remedian._shouldCalculateWeightedMedian()).toEqual(true);
-    expect(remedian.getMedian()).toEqual(2);
+    expect(remedian.approximate()).toEqual(2);
   });
 });

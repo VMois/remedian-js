@@ -151,7 +151,7 @@ class Remedian {
      * Calculate approximate median.
      * @return {number} approximate median.
      */
-  getMedian() {
+  approximate() {
     if (this.buffers.length == 0) {
       return undefined;
     }
