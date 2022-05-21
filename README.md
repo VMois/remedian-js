@@ -14,7 +14,7 @@ A small JavaScript library for efficient approximation of median value on a stre
 ```javascript
 const Remedian = require('remedian');
 
-const remedian = new Remedian(3);
+const remedian = new Remedian();
 remedian.write(1);
 remedian.write(2);
 remedian.write(3);

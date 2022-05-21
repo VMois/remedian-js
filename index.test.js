@@ -61,6 +61,11 @@ describe('Weighted median function', () => {
 });
 
 describe('Remedian algorithm implementation correctness', () => {
+  test('default buffer size is 3', () => {
+    const remedian = new Remedian();
+    expect(remedian.bufferSize).toEqual(3);
+  });
+
   test('first buffer is created only when first number is added', () => {
     const remedian = new Remedian(3);
     expect(remedian.buffers.length).toEqual(0);

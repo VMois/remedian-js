@@ -9,10 +9,14 @@
 class Remedian {
   /**
      * Create an instance of an algorithm.
-     * @param {number} bufferSize - size of a single buffer.
+     * @param {number} [bufferSize=3] - size of a single buffer.
      */
   constructor(bufferSize) {
+    if (bufferSize === undefined) {
+        bufferSize = 3;
+    }
     this.bufferSize = bufferSize;
+
     this.buffers = [];
   }
 
