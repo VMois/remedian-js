@@ -15,6 +15,10 @@ class Remedian {
     if (bufferSize === undefined) {
       bufferSize = 3;
     }
+    else if (bufferSize % 2 === 0) {
+      bufferSize = 3;
+      throw new SyntaxError("Remedian buffer size must be an odd number")
+    }
     this.bufferSize = bufferSize;
 
     this.buffers = [];
