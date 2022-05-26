@@ -14,6 +14,9 @@ class Remedian {
   constructor(bufferSize) {
     if (bufferSize === undefined) {
       bufferSize = 3;
+    } else if (bufferSize <= 1 || bufferSize % 2 === 0) {
+      throw new Error(`Remedian buffer size must be an odd number 
+      greater or equal to 3. You provided ${bufferSize}`);
     }
     this.bufferSize = bufferSize;
 
@@ -153,7 +156,8 @@ class Remedian {
 
   /**
      * Calculate approximate median based on Remedian algorithm.
-     * @return {(number|undefined)} approximate median if, at least, one number was added.
+     * @return {(number|undefined)} approximate median if, at least,
+     * one number was added.
      */
   approximate() {
     if (this.buffers.length == 0) {
