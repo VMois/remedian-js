@@ -13,6 +13,6 @@ module.exports = {
   },
   'rules': {
     'require-jsdoc' : 0,
-    'max-len': 1,
+    'max-len': 0,
   },
 };
