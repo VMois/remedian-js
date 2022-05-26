@@ -88,24 +88,22 @@ describe('Remedian algorithm implementation correctness', () => {
     expect(remedian.buffers.length).toEqual(1);
   });
 
-  test(`when current buffer is full, new buffer is created with correct median`
-      , () => {
-        const remedian = new Remedian(3);
-        remedian.write(1);
-        remedian.write(2);
-        expect(remedian.buffers.length).toEqual(1);
-        remedian.write(3);
-        expect(remedian.buffers.length).toEqual(2);
+  test(`when current buffer is full, new buffer is created with correct median`, () => {
+    const remedian = new Remedian(3);
+    remedian.write(1);
+    remedian.write(2);
+    expect(remedian.buffers.length).toEqual(1);
+    remedian.write(3);
+    expect(remedian.buffers.length).toEqual(2);
 
-        // median of (1,2,3) is 2, and should be placed in a new buffer
-        expect(remedian.buffers[1][0]).toEqual(2);
+    // median of (1,2,3) is 2, and should be placed in a new buffer
+    expect(remedian.buffers[1][0]).toEqual(2);
 
-        // returns correct median
-        expect(remedian.approximate()).toEqual(2);
-      });
+    // returns correct median
+    expect(remedian.approximate()).toEqual(2);
+  });
 
-  test(`when number of elements is not a power of buffer size, weighted 
-  median should be calculated`, () => {
+  test(`when number of elements is not a power of buffer size, weighted median should be calculated`, () => {
     const remedian = new Remedian(3);
     remedian.write(1);
     remedian.write(2);
