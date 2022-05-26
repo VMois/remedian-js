@@ -60,12 +60,27 @@ describe('Weighted median function', () => {
   );
 });
 
-describe('Remedian algorithm implementation correctness', () => {
+describe('Buffer size correctness', () => {
   test('default buffer size is 3', () => {
     const remedian = new Remedian();
     expect(remedian.bufferSize).toEqual(3);
   });
 
+  test.each([
+    -1, 0, 1, 2, 4,
+  ])(
+      `check for error if buffer size is: %s`,
+      (value) => {
+        expect(()=>{
+          /* eslint-disable no-unused-vars */
+          const remedian = new Remedian(value);
+          /* eslint-enable no-unused-vars */
+        }).toThrowError();
+      },
+  );
+});
+
+describe('Remedian algorithm implementation correctness', () => {
   test('first buffer is created only when first number is added', () => {
     const remedian = new Remedian(3);
     expect(remedian.buffers.length).toEqual(0);
@@ -73,22 +88,24 @@ describe('Remedian algorithm implementation correctness', () => {
     expect(remedian.buffers.length).toEqual(1);
   });
 
-  test(`when current buffer is full, new buffer is created with correct median`, () => {
-    const remedian = new Remedian(3);
-    remedian.write(1);
-    remedian.write(2);
-    expect(remedian.buffers.length).toEqual(1);
-    remedian.write(3);
-    expect(remedian.buffers.length).toEqual(2);
+  test(`when current buffer is full, new buffer is created with correct median`
+      , () => {
+        const remedian = new Remedian(3);
+        remedian.write(1);
+        remedian.write(2);
+        expect(remedian.buffers.length).toEqual(1);
+        remedian.write(3);
+        expect(remedian.buffers.length).toEqual(2);
 
-    // median of (1,2,3) is 2, and should be placed in a new buffer
-    expect(remedian.buffers[1][0]).toEqual(2);
+        // median of (1,2,3) is 2, and should be placed in a new buffer
+        expect(remedian.buffers[1][0]).toEqual(2);
 
-    // returns correct median
-    expect(remedian.approximate()).toEqual(2);
-  });
+        // returns correct median
+        expect(remedian.approximate()).toEqual(2);
+      });
 
-  test(`when number of elements is not a power of buffer size, weighted median should be calculated`, () => {
+  test(`when number of elements is not a power of buffer size, weighted 
+  median should be calculated`, () => {
     const remedian = new Remedian(3);
     remedian.write(1);
     remedian.write(2);
